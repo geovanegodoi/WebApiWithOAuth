@@ -26,7 +26,7 @@ namespace WebApiWithOAuth.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult CreateToken([FromBody] UserCredentials user)
+        public IActionResult DoLogin([FromBody] UserCredentials user)
         {
             IActionResult response = Unauthorized();
 
