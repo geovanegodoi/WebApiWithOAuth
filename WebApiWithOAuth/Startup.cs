@@ -41,6 +41,12 @@ namespace WebApiWithOAuth
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.AddScoped<AuthenticationManager>();
+
+            services.AddSingleton<SigningConfigurations>();
+
+            services.AddSingleton<TokenConfigurations>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options => 
                     {

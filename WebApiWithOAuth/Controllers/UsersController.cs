@@ -17,7 +17,7 @@ namespace WebApiWithOAuth.Controllers
         private readonly UserBO DefaultBO = new UserBO();
 
         // GET: api/values
-        [HttpGet, Authorize]
+        [HttpGet]
         public IEnumerable<UserTO> Get()
         {
             return DefaultBO.GetAll();

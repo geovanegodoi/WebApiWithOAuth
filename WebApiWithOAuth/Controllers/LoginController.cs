@@ -26,15 +26,20 @@ namespace WebApiWithOAuth.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult DoLogin([FromBody] UserCredentials user)
+        public IActionResult DoLogin([FromServices] AuthenticationManager manager, 
+                                     [FromBody] UserCredentials user)
         {
             IActionResult response = Unauthorized();
 
-            if (UserAuthentication.Login(user.Login, user.Password))
+            if (manager.ValidateCredentials(user))
             {
-                var tokenString = GenerateToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(manager.GenerateToken(user));
             }
+            //if (UserAuthentication.Login(user.UserID, user.Password))
+            //{
+            //    var tokenString = GenerateToken(user);
+            //    response = Ok(new { token = tokenString });
+            //}
             return response;
         }
 

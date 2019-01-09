@@ -49,21 +49,21 @@ namespace WebApiWithOAuth.Security
                     UserName = "admin_api",
                     Email = "admin-api@mail.com",
                     EmailConfirmed = true
-                }, "AdminApi!", Roles.ROLE_API_ADMIN);
+                }, "AdminApi01!", Roles.ROLE_API_ADMIN);
 
                 CreateUser(new ApplicationUser
                 {
                     UserName = "normal_api",
                     Email = "normal-api@mail.com",
                     EmailConfirmed = true
-                }, "NormalApi!", Roles.ROLE_API_NORMAL);
+                }, "NormalApi02!", Roles.ROLE_API_NORMAL);
 
                 CreateUser(new ApplicationUser
                 {
                     UserName = "invalid_api",
                     Email = "invalid-api@mail.com",
                     EmailConfirmed = true
-                }, "InvalidApi!");
+                }, "InvalidApi03!");
             }
         }
 
