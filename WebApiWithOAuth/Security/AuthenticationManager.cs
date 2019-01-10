@@ -49,21 +49,26 @@ namespace WebApiWithOAuth.Security
 
         public Token GenerateToken(UserCredentials crendentials)
         {
+            var roles = _userManager.GetRolesAsync(
+                _userManager.FindByNameAsync(crendentials.UserID).Result)
+                .Result;
+
             ClaimsIdentity identity = new ClaimsIdentity(
                 new GenericIdentity(crendentials.UserID, "Login"),
                 new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                    new Claim(JwtRegisteredClaimNames.UniqueName, crendentials.UserID)
+                    new Claim(JwtRegisteredClaimNames.UniqueName, crendentials.UserID),
+                    new Claim("role", roles[0])
                 });
             var dtCreated = DateTime.Now;
             var dtExpire = dtCreated + TimeSpan.FromSeconds(1000);
             var handler = new JwtSecurityTokenHandler();
             var secutiryToken = handler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = "http://localhost:5001",
-                Audience = "http://localhost:5001",
-                SigningCredentials = null,
+                Issuer = _tokenConfigurations.Issuer,
+                Audience = _tokenConfigurations.Audience,
+                SigningCredentials = _signingConfigurations.Credentials,
                 Subject = identity,
                 NotBefore = dtCreated,
                 Expires = dtExpire

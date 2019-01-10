@@ -17,16 +17,9 @@ namespace WebApiWithOAuth.Controllers
     [Route("api/[controller]")]
     public class LoginController : Controller
     {
-        private readonly IConfiguration _config;
-
-        public LoginController(IConfiguration config)
-        {
-            _config = config;
-        }
-
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult DoLogin([FromServices] AuthenticationManager manager, 
+        public IActionResult DoLogin([FromServices] AuthenticationManager manager,
                                      [FromBody] UserCredentials user)
         {
             IActionResult response = Unauthorized();
@@ -35,26 +28,7 @@ namespace WebApiWithOAuth.Controllers
             {
                 response = Ok(manager.GenerateToken(user));
             }
-            //if (UserAuthentication.Login(user.UserID, user.Password))
-            //{
-            //    var tokenString = GenerateToken(user);
-            //    response = Ok(new { token = tokenString });
-            //}
             return response;
-        }
-
-        private string GenerateToken(UserCredentials user)
-        {
-            var seed = _config["Jwt:Key"];
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(seed));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],
-                                             _config["Jwt:Issuer"],
-                                             expires: DateTime.Now.AddMinutes(30),
-                                             signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
