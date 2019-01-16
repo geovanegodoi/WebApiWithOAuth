@@ -22,3 +22,6 @@ https://www.devmedia.com.br/asp-net-identity-como-trabalhar-com-owin/33003
 
 * [Cutting Edge - Policy-Based Authorization in ASP.NET Core]
 https://msdn.microsoft.com/en-us/magazine/mt826337.aspx
+
+* [Cutting Edge - Cookies, Claims and Authentication in ASP.NET Core]
+https://msdn.microsoft.com/magazine/mt842501
