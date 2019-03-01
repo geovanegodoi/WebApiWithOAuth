@@ -25,3 +25,12 @@ https://msdn.microsoft.com/en-us/magazine/mt826337.aspx
 
 * [Cutting Edge - Cookies, Claims and Authentication in ASP.NET Core]
 https://msdn.microsoft.com/magazine/mt842501
+
+* [Jwt in Asp.Net Web API And MVC]
+http://www.techcerberus.com/2017/03/jwt-in-aspnet-web-api-and-mvc.html
+
+* [Implementando OAuth JSON Web Token com OWIN no ASP.NET Web API] 
+https://rafaelcruz.azurewebsites.net/2016/05/13/implementando-oauth-json-web-token-no-asp-net-web-api-e-owin/
+
+* [JSON Web Token in ASP.NET Web API 2 using Owin]
+http://bitoftech.net/2014/10/27/json-web-token-asp-net-web-api-2-jwt-owin-authorization-server/
