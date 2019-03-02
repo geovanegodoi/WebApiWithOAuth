@@ -34,3 +34,6 @@ https://rafaelcruz.azurewebsites.net/2016/05/13/implementando-oauth-json-web-tok
 
 * [JSON Web Token in ASP.NET Web API 2 using Owin]
 http://bitoftech.net/2014/10/27/json-web-token-asp-net-web-api-2-jwt-owin-authorization-server/
+
+* [Creating and consuming JWT tokens in .Net WebAPI]
+https://cmikavac.net/tag/webapi/
